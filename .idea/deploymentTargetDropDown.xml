@@ -5,6 +5,12 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="mod3compose">
+        <State />
+      </entry>
+      <entry key="mod4statevm">
+        <State />
+      </entry>
     </value>
   </component>
 </project>
