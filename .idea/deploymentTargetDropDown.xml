@@ -5,7 +5,13 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="eni_shop">
+        <State />
+      </entry>
       <entry key="mod3compose">
+        <State />
+      </entry>
+      <entry key="mod4chat">
         <State />
       </entry>
       <entry key="mod4statevm">

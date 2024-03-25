@@ -55,7 +55,7 @@ fun Counter(modifier:Modifier=Modifier, vm : CounterVM = viewModel()) {
     val state = vm.stateFlowCounter.collectAsState()
     Column(modifier.fillMaxWidth().padding(top = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(state.value.toString(), style = Typography.headlineSmall)
+        Text(state.value.toString(), style = Typography.headlineMedium)
         Row(horizontalArrangement = Arrangement.Center){
             IconButton(onClick = { vm.dec() }) {
                     Icon(imageVector = Icons.Default.KeyboardArrowDown, null)

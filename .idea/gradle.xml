@@ -10,8 +10,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/eni_shop" />
             <option value="$PROJECT_DIR$/mod2filmserie" />
             <option value="$PROJECT_DIR$/mod3compose" />
+            <option value="$PROJECT_DIR$/mod4chat" />
             <option value="$PROJECT_DIR$/mod4statevm" />
           </set>
         </option>
