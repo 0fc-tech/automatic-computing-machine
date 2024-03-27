@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/mod3compose" />
             <option value="$PROJECT_DIR$/mod4chat" />
             <option value="$PROJECT_DIR$/mod4statevm" />
+            <option value="$PROJECT_DIR$/mod6datastore" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

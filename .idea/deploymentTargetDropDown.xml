@@ -17,6 +17,9 @@
       <entry key="mod4statevm">
         <State />
       </entry>
+      <entry key="mod6datastore">
+        <State />
+      </entry>
     </value>
   </component>
 </project>

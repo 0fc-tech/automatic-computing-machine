@@ -1,4 +1,4 @@
-package com.example.eni_shop
+package com.example.eni_shop.model
 
 data class Product(
     val name: String,
