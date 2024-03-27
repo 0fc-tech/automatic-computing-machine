@@ -21,6 +21,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,8 +29,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mod6datastore.ui.theme.TPTheme
 import com.example.mod6datastore.ui.theme.Typography
+import kotlinx.coroutines.flow.StateFlow
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,21 +52,32 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun SettingsPage() {
+fun SettingsPage(vm : SettingsViewModel = viewModel(factory = SettingsViewModel.Factory)) {
     Scaffold(contentWindowInsets = WindowInsets(32,32,32,32)) { innerPadding->
         Column(verticalArrangement =Arrangement.spacedBy(8.dp),
         modifier=Modifier.padding(innerPadding)) {
-            CardSetting("Adresse 1 ")
-            CardSetting("Adresse 2")
-            CardSetting("Code Entreprise")
-            CardSetting("ID Carte réduction")
+            CardSetting("Adresse 1 ",
+                        vm.adresse1StateFlow,
+                        onSaveSetting = {vm.saveAdresse1(it)})
+            CardSetting("Adresse 2",
+                        vm.adresse2StateFlow,
+                        onSaveSetting = {vm.saveAdresse2(it)})
+            CardSetting("Code Entreprise",
+                        vm.codeEntrepriseStateFlow,
+                        onSaveSetting = {vm.saveCodeEntreprise(it)})
+            CardSetting("ID Carte réduction",
+                        vm.carteReductionStateFlow,
+                        onSaveSetting = {vm.saveCarteReduction(it)})
         }
     }
 }
 
 @Composable
-private fun CardSetting(titre : String) {
+private fun CardSetting(titre : String,
+                        settingValueVM : StateFlow<String?>,
+                        onSaveSetting : (String)->Unit) {
     var uiState by remember {mutableStateOf("") }
+    uiState = settingValueVM.collectAsState().value ?: ""
     Card {
         Column(
             Modifier
@@ -75,7 +89,7 @@ private fun CardSetting(titre : String) {
                 value = uiState,
                 onValueChange = {uiState = it},
                 trailingIcon = {
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = { onSaveSetting(uiState) }) {
                         Icon(
                             imageVector = Icons.Default.Check,
                             contentDescription = "Valider"
